@@ -1,0 +1,26 @@
+{
+  "name": "digi_pw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreasvogt89/digi_pw.git"
+  },
+  "keywords": [
+    "dev"
+  ],
+  "author": "Andreas Vogt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andreasvogt89/digi_pw/issues"
+  },
+  "homepage": "https://github.com/andreasvogt89/digi_pw#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "jsdom": "^16.5.3"
+  }
+}
