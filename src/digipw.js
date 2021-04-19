@@ -12,7 +12,7 @@ class DigiPW {
         });
         const dom = new JSDOM(html);
         const $ = (selector) => dom.window.document.querySelector(selector).textContent;
-        const price = $('.ZZbx');
+        const price = $('.ZZde');
         return {
             date: new Date(),
             price: price
