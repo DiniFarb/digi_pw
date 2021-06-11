@@ -11,9 +11,10 @@ class DigiPW {
             }
         });
         const dom = new JSDOM(html);
-        const $ = (selector) => dom.window.document.querySelector(selector).textContent;
-        const price = $('.ZZde');
+        const $ = (selector) => dom.window.document.querySelectorAll(selector)
+        const price = $('strong')[4].textContent
         return {
+            id: procuct_identifier,
             date: new Date(),
             price: price
         }
