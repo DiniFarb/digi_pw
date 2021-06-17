@@ -6,12 +6,6 @@ bot.launch();
 process.once("SIGINT", () => bot.stop("SIGINT"));
 process.once("SIGTERM", () => bot.stop("SIGTERM"));
 
-let samples = [
-    'lenovo-v50s-07imb-intel-core-i7-10700-16gb-512gb-1tb-ssd-hdd-pc-14393611',
-    'ultimaker-2-connect-plus-air-manager-3d-drucker-15339619',
-    'lenovo-v50s-intel-core-i5-10400-8gb-1tb-hdd-pc-14082589',
-    'lenovo-thinkcentre-m90t-intel-core-i9-10900-32gb-1000gb-ssd-pc-14674994'
-]
 let products = [];
 
 bot.command('add', async(ctx) => {
@@ -38,17 +32,18 @@ bot.command('list', (ctx) => {
 
 
 setInterval(() => {
-
-}, 1000 * 3600 * 2);
+    getPrices();
+}, 1000 * 10);
 
 function getPrices() {
-    products.forEach(product => {
-        DigiPW.getPrice(product.name).then(res => {
-            if (products[product.name].price !== res.price) {
-                products[product.name] = res;
-                bot.telegram.sendMessage(process.env.CHAT_ID, `Change for: ${product.name}\n From: ${products[product.name].price}\n From: ${res.price}`);
+    products.forEach((product, i) => {
+        DigiPW.getPrice(product.id).then(res => {
+            if (product.price !== res.price) {
+                products[i] = res;
+                bot.telegram.sendMessage(process.env.CHAT_ID, `Change for: ${product.id}\n From: ${products[product.name].price}\n From: ${res.price}`);
+            } else {
+                console.log(`${product.id} has not changed`)
             };
         }).catch(err => console.log(err));
     });
 }
-getPrices();
